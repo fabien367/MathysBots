@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mathys"
+             xmlns:ImageService="clr-namespace:Mathys.Services.Services;assembly=Mathys.Services"
+             xmlns:CustomControles="clr-namespace:Mathys.CustomControles;assembly=Mathys.CustomControles"
+             x:Class="Mathys.MainPage">
+
+    <AbsoluteLayout>
+        <Image AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill" Source="{ImageService:EmbeddedImage RessourceId=Mathys.Services.Images.background_flat2.png}"/>
+        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" CustomControles:AttachedProperties.HasPop="{Binding Path=TitleAnim, Mode=TwoWay}">
+                    <Label Text="Mathys" FontAttributes="None" TextColor="White" FontSize="52" HorizontalOptions="CenterAndExpand">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="Lobster-Regular"/>
+                                <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                                <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Text="Prepare your custom bot to help along your customers with their issues." TextColor="White" FontAttributes="Italic" MaxLines="2" LineBreakMode="WordWrap" FontSize="Small" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                    </Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Orientation="Horizontal" CustomControles:AttachedProperties.HasPop="{Binding Path=UserAnim, Mode=TwoWay}">
+                    <Label Text="Connected as:" TextColor="White"/>
+                    <Label Text="DELL" FontAttributes="Bold" TextColor="White"/>
+                </StackLayout>
+                <Frame Grid.Row="2" Grid.Column="1" CornerRadius="15" HasShadow="True" Padding="1" VerticalOptions="StartAndExpand" CustomControles:AttachedProperties.HasPop="{Binding Path=ButtonAnim, Mode=TwoWay}">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="70" BackgroundColor="White" Padding="5,5">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToAddItemCommand}"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{ImageService:EmbeddedImage RessourceId=Mathys.Services.Images.add_icon.png}" HeightRequest="75"/>
+                            <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical">
+                                <Label Text="Add new model" HorizontalOptions="Start" FontAttributes="Bold" FontSize="Small"/>
+                                <Label Text="Click to add a new model to our database" HorizontalOptions="Start" FontAttributes="Italic" FontSize="Micro" TextColor="DarkGray"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </AbsoluteLayout>
+    
+</ContentPage>

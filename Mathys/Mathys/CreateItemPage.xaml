@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mathys.CreateItemPage"
+             xmlns:ImageService="clr-namespace:Mathys.Services.Services;assembly=Mathys.Services"
+             xmlns:CustomControles="clr-namespace:Mathys.CustomControles;assembly=Mathys.CustomControles"
+             Title="Create new item"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Padding="20,20">
+
+            <!--PART 1 - DOWMLOAD TEMPLATE-->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block1Anim, Mode=TwoWay}" IsVisible="False">
+                <Label Text="1 -" FontAttributes="Bold" TextColor="#41a0f2" FontSize="Medium">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label Text="First, download the excel template" TextColor="#41a0f2" FontSize="Medium">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
+            <Frame CornerRadius="15" HasShadow="True" Padding="1" Margin="0,0,0,15" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block1Anim, Mode=TwoWay}" IsVisible="False">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Padding="5,5">
+                    <Button Text="Download" HorizontalOptions="Center" BackgroundColor="#41a0f2" TextColor="White" Command="{Binding DownloadTemplateCommand}">
+                    </Button>
+                </StackLayout>
+            </Frame>
+
+            <!--PART 2 - MODEL NAME-->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block2Anim, Mode=TwoWay}" IsVisible="False">
+                <Label Text="2 -" FontAttributes="Bold" FontSize="Medium" TextColor="#41a0f2">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label Text="Then, enter the name of your model" FontSize="Medium" TextColor="#41a0f2">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
+            <Frame CornerRadius="15" HasShadow="True" Padding="1" Margin="0,0,0,15" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block2Anim, Mode=TwoWay}" IsVisible="False">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Padding="5,5">
+                    <Entry Placeholder="Model name" Text="{Binding Path=ModelName, Mode=TwoWay}" TextColor="#41a0f2"/>
+                </StackLayout>
+            </Frame>
+
+             <!--PART 3 - LOAD-->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Opacity="{Binding Path=LoadOpacity}" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block3Anim, Mode=TwoWay}" IsVisible="False">
+                <Label Text="3 -" FontAttributes="Bold" TextColor="#41a0f2" FontSize="Medium">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label Text="Now, fill then load the template" TextColor="#41a0f2" FontSize="Medium">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
+            <Frame CornerRadius="15" HasShadow="True" Padding="1" Margin="0,0,0,15" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block3Anim, Mode=TwoWay}" IsVisible="False">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Padding="5,5" Opacity="{Binding Path=LoadOpacity}" InputTransparent="{Binding Path=IsLoadAvailable}">
+                    <Button Text="Load File" Command="{Binding ChooseFileCommand}" HorizontalOptions="Center" BackgroundColor="#41a0f2" TextColor="White"/>
+                    <Label Text="{Binding Path=FileName, Mode=TwoWay}"/>
+                </StackLayout>
+            </Frame>
+
+            <!--PART 4 - SEND-->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Opacity="{Binding Path=SendOpacity}" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block4Anim, Mode=TwoWay}" IsVisible="False">
+                <Label Text="4 -" FontAttributes="Bold" TextColor="#41a0f2" FontSize="Medium">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label Text="Finally send the changes" TextColor="#41a0f2" FontSize="Medium">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Lobster-Regular"/>
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
+            <Frame CornerRadius="15" HasShadow="True" Padding="1" Margin="0,0,0,15" CustomControles:AttachedProperties.HasTranslation="{Binding Path=Block4Anim, Mode=TwoWay}" IsVisible="False">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Padding="5,5" Opacity="{Binding Path=SendOpacity}" InputTransparent="{Binding Path=IsSendAvailable}">
+                    <Button HorizontalOptions="Center" VerticalOptions="EndAndExpand" BackgroundColor="#41a0f2" Text="Send" TextColor="White" Command="{Binding SendItemCommand}"/>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
